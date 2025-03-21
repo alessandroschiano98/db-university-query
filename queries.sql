@@ -18,10 +18,13 @@ WHERE `date_of_birth` LIKE "1995%";
 -- 6. Selezionare tutti i corsi di laurea magistrale (38)
 
 -- 7. Da quanti dipartimenti è composta l'università? (12)
-SELECT COUNT(*) AS `conteggio_dipartimenti_università`
+SELECT COUNT(*) AS `dipartimenti_università`
 FROM `departments`;
 
 -- 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
+SELECT COUNT(*) AS `insegnanti_sprovvisti_di_numero_cell`
+FROM `teachers`
+WHERE `phone` IS NULL;
 -- 9. Inserire nella tabella degli studenti un nuovo record con i propri dati (per il campo degree_id, inserire un valore casuale)
 -- 10. Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126
 -- 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
