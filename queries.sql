@@ -38,4 +38,4 @@ SET office_number = 126
 WHERE id = 58;
 -- 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 DELETE FROM `students` 
-WHERE `degree_id` = 5 AND email = 'schianoski98@gmail.com';
+WHERE `degree_id` = 5 AND `email` = 'schianoski98@gmail.com';
