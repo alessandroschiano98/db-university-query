@@ -1,13 +1,14 @@
+-- ESERCIZIO 1 
 -- 1. Selezionare tutti gli studenti nati nel 1990 (160)
 SELECT *
 FROM `students`
 WHERE `date_of_birth` LIKE "1990%";
 -- 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
-SELECT *
-FROM `courses`
-WHERE `cfu`
-ORDER BY `cfu` < 10;
--- 3. Selezionare tutti gli studenti che hanno più di 30 anni-- DA MODIFICARE -- 
+SELECT * 
+FROM `courses` 
+WHERE `cfu` > 10 
+ORDER BY `cfu` ASC;
+-- 3. Selezionare tutti gli studenti che hanno più di 30 anni
 SELECT *
 FROM `students`
 WHERE `date_of_birth` LIKE "1995%"; 
@@ -38,4 +39,11 @@ SET office_number = 126
 WHERE id = 58;
 -- 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 DELETE FROM `students` 
-WHERE `degree_id` = 5 AND `email` = 'schianoski98@gmail.com';
+WHERE `degree_id` = 5 AND `email` = "schianoski98@gmail.com";
+
+
+-- ESERCIZIO 2
+-- 1. Contare quanti iscritti ci sono stati ogni anno
+-- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+-- 3. Calcolare la media dei voti di ogni appello d'esame
+-- 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
