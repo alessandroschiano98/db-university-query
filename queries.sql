@@ -47,9 +47,3 @@ WHERE `degree_id` = 5 AND `email` = "schianoski98@gmail.com";
 -- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 -- 3. Calcolare la media dei voti di ogni appello d'esame
 -- 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
-SELECT departments.name, COUNT(courses.id) AS conteggio_corsi_dipartimento
-FROM departments
-LEFT JOIN degrees ON departments.id = degrees.department_id
-LEFT JOIN courses ON degrees.id = courses.degree_id
-GROUP BY departments.name
-ORDER BY conteggio_corsi_dipartimento DESC;
