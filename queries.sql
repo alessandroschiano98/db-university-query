@@ -85,20 +85,32 @@ SELECT *
 FROM `students`
 INNER JOIN `degrees`
 WHERE `degrees`.`name` = "Corso di Laurea in Economia";
+(DA CORREGGERE)
 -- 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze --
 SELECT `degrees`.`name`,`degrees`.`level`, `degrees`.`email` AS `degrees_info`,`departments`.`name` AS `department_name`, `departments`.`address` AS `department_address`
 FROM `degrees`
 INNER JOIN `departments`
 ON `departments`.`name` = "Dipartimento di Neuroscienze" 
 AND `degrees`.`level` = "Magistrale";
+(DA CORREGGERE)
 -- 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44) --
 SELECT `degrees`.`name`, `teachers`.`name`, `teachers`.`surname`
 FROM `degrees`
 INNER JOIN `teachers`
-ON `teachers`.`id` = 44;
+ON `degrees.teacher_id` = `teachers.id`
+WHERE `teachers.id` = 44;
+(DA CORREGGERE)
 -- 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome --
 -- 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti --
-SELECT `degrees`.`name` AS `degrees_name`, `teachers`.`name` AS `name_teachers`,`teachers`.`surname`AS `surname_teachers`, `degrees`.`level`,`degrees`.`address` AS `degrees_address`, `courses`.`name` AS `courses_name`, `courses`.`description`, `courses`.`cfu`
+SELECT `degrees`.`name` AS `degrees_name`,`teachers`.`name`AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`,`courses`.`name` AS `courses_name`, `courses`.`period` AS `courses_period`
 FROM `teachers`
+INNER JOIN `course_teacher`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+INNER JOIN `courses`
+ON `course_teacher`.`course_id` = `courses`.`id`
+INNER JOIN `degrees`
+ON `courses`.`degree_id` = `degrees`.`id`
+ORDER BY `teachers`.`name` ASC;
 -- 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54) --
+
 -- 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami --
