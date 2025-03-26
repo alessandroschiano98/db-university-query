@@ -1,4 +1,5 @@
 -- ESERCIZIO 1 
+
 -- 1. Selezionare tutti gli studenti nati nel 1990 (160)
 SELECT *
 FROM `students`
@@ -59,6 +60,7 @@ WHERE `degree_id` = 5 AND `email` = "schianoski98@gmail.com";
 
 
 -- ESERCIZIO 2
+
 -- 1. Contare quanti iscritti ci sono stati ogni anno
 SELECT YEAR (`enrolment_date`), COUNT(*)
 FROM `students`
@@ -79,9 +81,26 @@ GROUP BY `department_id`;
 -- ESERCIZIO 3 
 
 -- 1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia -- 
+SELECT * 
+FROM `students`
+INNER JOIN `degrees`
+WHERE `degrees`.`name` = "Corso di Laurea in Economia";
 -- 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze --
+SELECT `degrees`.`name`,`degrees`.`level`, `degrees`.`email` AS `degrees_info`,`departments`.`name` AS `department_name`, `departments`.`address` AS `department_address`
+FROM `degrees`
+INNER JOIN `departments`
+ON `departments`.`name` = "Dipartimento di Neuroscienze" 
+AND `degrees`.`level` = "Magistrale";
 -- 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44) --
+SELECT `degrees`.`name`, `teachers`.`name`, `teachers`.`surname`
+FROM `degrees`
+INNER JOIN `teachers`
+ON `teachers`.`id` = 44;
 -- 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome --
 -- 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti --
+SELECT `degrees`.`name` AS `degrees_name`, `teachers`.`name` AS `name_teachers`,`teachers`.`surname`AS `surname_teachers`, `degrees`.`level`,`degrees`.`address` AS `degrees_address`, `courses`.`name` AS `courses_name`, `courses`.`description`, `courses`.`cfu`
+FROM `teachers`
+INNER JOIN `courses`
+INNER JOIN `degrees`;
 -- 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54) --
 -- 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami --
