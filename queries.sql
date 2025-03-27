@@ -88,6 +88,7 @@ ON `students`.`id`
 WHERE `degrees`.`name` = "Corso di Laurea in Economia" 
 ORDER BY `students`.`id` ASC;
 -- 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze --
+DA MODIFICARE
 SELECT `degrees`.`name`,`degrees`.`level`, `degrees`.`email` AS `degrees_info`,`departments`.`name` AS `department_name`, `departments`.`address` AS `department_address`
 FROM `degrees`
 INNER JOIN `departments_degrees`
